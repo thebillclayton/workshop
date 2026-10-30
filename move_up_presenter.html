@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presenter Console · Veterans Move-Up Workshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-12">
+    <!-- Presenter Control Deck -->
+    <div class="bg-amber-950/80 border-b border-amber-500/30 sticky top-0 z-50 backdrop-blur">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-amber-400 animate-pulse"></span>
+                <span class="font-bold text-amber-300 text-sm tracking-wide uppercase">Presenter Console</span>
+            </div>
+
+            <!-- Room Pulse Barometer Card -->
+            <div class="flex items-center space-x-4 text-xs bg-slate-900/90 border border-amber-500/30 rounded-xl px-4 py-2">
+                <div><span class="text-slate-400 block">Families</span><span id="baroCount" class="font-bold text-white">1</span></div>
+                <div><span class="text-slate-400 block">Avg Rate</span><span id="baroRate" class="font-bold text-amber-300">2.25%</span></div>
+                <div><span class="text-slate-400 block">Avg Equity</span><span id="baroEquity" class="font-bold text-emerald-400">$180,852</span></div>
+                <button onclick="resetBarometer()" class="text-slate-400 hover:text-white underline ml-2">Reset</button>
+            </div>
+
+            <button onclick="copyAttendeeLink()" class="bg-amber-500 text-slate-950 px-3.5 py-1.5 rounded-lg font-bold text-xs hover:bg-amber-400 transition">📋 Copy Attendee URL</button>
+        </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pt-8 text-center space-y-4">
+        <h1 class="text-3xl font-extrabold text-white">Move-Up Workshop Presenter Console</h1>
+        <p class="text-slate-400 text-sm">Use this view on your iPad/laptop during presentation to view live room averages and manage attendee links.</p>
+    </div>
+
+    <script>
+        function updateBarometer() {
+            const data = JSON.parse(localStorage.getItem('room_pulse_data') || '[]');
+            if (data.length === 0) return;
+
+            document.getElementById('baroCount').innerText = data.length;
+            const totalEq = data.reduce((acc, curr) => acc + curr.equity, 0);
+            const avgEq = Math.round(totalEq / data.length);
+            document.getElementById('baroEquity').innerText = '$' + avgEq.toLocaleString();
+        }
+
+        function resetBarometer() {
+            localStorage.removeItem('room_pulse_data');
+            document.getElementById('baroCount').innerText = '0';
+            document.getElementById('baroEquity').innerText = '$0';
+        }
+
+        function copyAttendeeLink() {
+            const url = window.location.origin + window.location.pathname.replace('move_up_presenter.html', 'index.html');
+            navigator.clipboard.writeText(url);
+            alert('Attendee URL copied to clipboard: ' + url);
+        }
+
+        setInterval(updateBarometer, 2000);
+    </script>
+</body>
+</html>
