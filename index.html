@@ -61,20 +61,30 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
-                        <span class="text-[10px] text-slate-400 block mb-0.5">Est. Selling Costs (about 6.7%)</span>
-                        <div id="outSellCosts" class="text-sm font-bold text-rose-400">-$27,893</div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Realtor / Listing Fees (%)</label>
+                        <input type="number" inputmode="decimal" id="inListPct" value="6" step="0.25" min="0" max="10" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
                     </div>
-                    <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl p-3">
-                        <span class="text-[10px] text-emerald-300 block mb-0.5 uppercase tracking-wider font-semibold">Net Equity to Work With</span>
-                        <div id="outNet" class="text-base font-black text-emerald-400">$152,959</div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Negotiations / Seller Costs (%)</label>
+                        <input type="number" inputmode="decimal" id="inNegPct" value="0.71" step="0.25" min="0" max="10" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
                     </div>
                 </div>
 
-                <button onclick="sharePulse()" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition">
-                    📡 Share Anonymous Numbers with Room
-                </button>
-                <div id="pulseConfirm" class="text-center text-[11px] text-emerald-400 hidden">✓ Shared anonymously</div>
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <span class="text-[10px] text-slate-400 block mb-0.5">Gross Equity</span>
+                        <div id="outGross" class="text-sm font-bold text-white">$180,852</div>
+                    </div>
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <span class="text-[10px] text-slate-400 block mb-0.5">Cost to Sell</span>
+                        <div id="outSellCosts" class="text-sm font-bold text-rose-400">-$27,902</div>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl p-3">
+                        <span class="text-[10px] text-emerald-300 block mb-0.5 uppercase tracking-wider font-semibold">Net Equity</span>
+                        <div id="outNet" class="text-sm font-black text-emerald-400">$152,950</div>
+                    </div>
+                </div>
             </section>
 
             <!-- Step 2: Debts -->
@@ -124,8 +134,8 @@
                     <input type="number" inputmode="numeric" id="inEscrow" value="675" step="25" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
                 </div>
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Path 3 Cushion to Keep ($)</label>
-                    <input type="number" inputmode="numeric" id="inP3Cushion" value="0" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
+                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Loan</label>
+                    <div class="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-2 text-slate-300 font-bold text-sm">30-yr fixed</div>
                 </div>
             </div>
         </section>
@@ -163,9 +173,10 @@
         <!-- Invite -->
         <section class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-5 text-center space-y-3">
             <p class="text-sm text-emerald-100 font-semibold">None of these is automatically right. The right one fits your goals.</p>
-            <p class="text-xs text-slate-300">If you'd like to see this with your real numbers, let's set up a short planning conversation. No application, no pressure.</p>
+            <p class="text-xs text-slate-300">Want to see this with your real numbers? Grab 10 minutes with me and we'll build your plan together. No application, no pressure.</p>
+            <a href="https://calendly.com/billclayton-rate/intro-call" target="_blank" rel="noopener" class="block w-full sm:w-auto sm:inline-block px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-base font-black">📅 Book 10 Minutes with Bill</a>
             <div class="flex flex-wrap justify-center gap-2 pt-1">
-                <a href="tel:+17066605245" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold">📞 Call or text Bill · 706-660-5245</a>
+                <a href="tel:+17066605245" class="px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">📞 706-660-5245</a>
                 <button onclick="copyText('706-660-5245', this)" class="px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">Copy number</button>
                 <a href="mailto:bill.clayton@rate.com?subject=Move-Up%20Workshop%20-%20my%20plan" class="px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">✉️ bill.clayton@rate.com</a>
             </div>
@@ -173,9 +184,9 @@
 
     </main>
 
+
     <script>
         // Master example: Prelim Est (Video 10-16-26)
-        const SELL_PCT = 27893 / 415832; // ties net equity to $152,959 at $415,832 value
         let debts = [
             { name: "Car Loan",      balance: 24602,   payment: 493, payoff: true },
             { name: "Car Loan",      balance: 24602,   payment: 493, payoff: true },
@@ -186,6 +197,18 @@
             { name: "Personal Loan", balance: 5637,    payment: 148, payoff: true },
             { name: "Personal Loan", balance: 5637,    payment: 148, payoff: true }
         ];
+
+        // Each path has ONE limited adjustment (0-25%) so the three options always stay distinct.
+        const MAX_ADJ = 25;
+        const PATHS = [
+            { k: 'Path 1', h: 'Down Payment Only', b: 'Net equity goes down on the new home. Every debt payment stays.',
+              adjLabel: 'Keep in savings', adjOf: 'of your equity' },
+            { k: 'Path 2 · Recommended', h: 'Pay Off + Cushion', b: 'Checked debts paid in full. Zero down (like VA). The rest stays in the bank as your cushion.',
+              adjLabel: 'Put down', adjOf: 'of what’s left after payoffs', hi: true },
+            { k: 'Path 3', h: 'Pay Off + Down', b: 'Checked debts paid in full, then the rest goes down to lower the payment.',
+              adjLabel: 'Keep as cushion', adjOf: 'of what’s left after payoffs' }
+        ];
+        const adj = [0, 0, 0];
 
         const $ = id => document.getElementById(id);
         const num = id => parseFloat($(id).value) || 0;
@@ -215,45 +238,50 @@
             renderDebts(); calc();
         }
 
-        function card(p) {
-            const diff = p.total - p.today;
-            const diffTxt = Math.round(diff) === 0 ? 'Same as today'
-                : money(Math.abs(diff)) + (diff > 0 ? ' more than today' : ' less than today');
-            const diffCls = diff > 0 ? 'text-amber-300' : 'text-emerald-300';
-            const badges = p.badges.map(b => `<span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${b.cls}">${b.t}</span>`).join('');
-            return `
+        // Cards are built once; calc() only updates their numbers so sliders don't lose their grip.
+        function buildCards() {
+            $('pathScroller').innerHTML = PATHS.map((p, i) => `
             <article class="path-card shrink-0 w-[85%] sm:w-[60%] md:w-auto rounded-2xl p-5 space-y-4 shadow-lg ${p.hi ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-slate-900/80 border border-slate-800'}">
                 <div class="space-y-1.5">
-                    <div class="flex flex-wrap gap-1.5 min-h-[1.25rem]">${badges}</div>
+                    <div id="badge${i}" class="flex flex-wrap gap-1.5 min-h-[1.25rem]"></div>
                     <div class="text-[10px] font-bold uppercase tracking-wider text-amber-400">${p.k}</div>
                     <h3 class="text-lg font-black text-white leading-tight">${p.h}</h3>
                     <p class="text-[11px] text-slate-400 leading-snug">${p.b}</p>
                 </div>
 
                 <div class="grid grid-cols-3 gap-2 text-center">
-                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Down</div><div class="text-xs font-bold text-white">${money(p.down)}</div></div>
-                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Debts paid</div><div class="text-xs font-bold text-white">${money(p.paid)}</div></div>
-                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Cushion</div><div class="text-xs font-bold text-emerald-400">${money(p.cushion)}</div></div>
+                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Down</div><div id="down${i}" class="text-xs font-bold text-white"></div></div>
+                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Debts paid</div><div id="paid${i}" class="text-xs font-bold text-white"></div></div>
+                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Cushion</div><div id="cush${i}" class="text-xs font-bold text-emerald-400"></div></div>
+                </div>
+
+                <div class="bg-slate-950/60 border border-slate-800 rounded-xl p-3 space-y-1">
+                    <div class="flex justify-between text-[11px]"><span class="text-slate-300 font-semibold">${p.adjLabel}</span><span id="adjv${i}" class="text-amber-300 font-bold"></span></div>
+                    <input type="range" min="0" max="${MAX_ADJ}" step="1" value="0" oninput="adj[${i}]=+this.value;calc()" class="w-full accent-amber-400" aria-label="${p.adjLabel}">
+                    <div class="text-[10px] text-slate-500">0 to ${MAX_ADJ}% ${p.adjOf}</div>
                 </div>
 
                 <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 space-y-1.5 text-xs">
-                    <div class="flex justify-between"><span class="text-slate-400">New house payment</span><span class="font-bold text-white">${money(p.house)}</span></div>
-                    <div class="flex justify-between text-[10px] text-slate-500 pl-2"><span>P&amp;I ${money(p.pi)} + taxes/ins ${money(p.escrow)}</span><span>loan ${money(p.loan)}</span></div>
-                    <div class="flex justify-between"><span class="text-slate-400">+ Other debt payments</span><span class="font-bold text-white">${money(p.debt)}</span></div>
-                    <div class="flex justify-between border-t border-slate-800 pt-2"><span class="font-black text-white uppercase tracking-wide text-[11px]">= Whole monthly budget</span><span class="font-black text-white text-base">${money(p.total)}</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">New house payment</span><span id="house${i}" class="font-bold text-white"></span></div>
+                    <div class="flex justify-between text-[10px] text-slate-500 pl-2"><span id="pidet${i}"></span><span id="loan${i}"></span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">+ Other debt payments</span><span id="debt${i}" class="font-bold text-white"></span></div>
+                    <div class="flex justify-between border-t border-slate-800 pt-2"><span class="font-black text-white uppercase tracking-wide text-[11px]">= Whole monthly budget</span><span id="tot${i}" class="font-black text-white text-base"></span></div>
                 </div>
 
-                <div class="rounded-xl p-3 text-center ${diff > 0 ? 'bg-amber-950/30 border border-amber-500/30' : 'bg-emerald-950/40 border border-emerald-500/40'}">
-                    <div class="text-lg font-black ${diffCls}">${diffTxt}</div>
-                    <div class="text-[10px] text-slate-400">Today: ${money(p.today)}/mo</div>
+                <div id="diffbox${i}" class="rounded-xl p-3 text-center">
+                    <div id="diff${i}" class="text-lg font-black"></div>
+                    <div id="today${i}" class="text-[10px] text-slate-400"></div>
                 </div>
-            </article>`;
+            </article>`).join('');
+            $('pathScroller').addEventListener('scroll', () => requestAnimationFrame(renderDots));
         }
 
         function calc() {
             const value = num('inHomeValue'), payoff = num('inPayoff');
-            const sell = value * SELL_PCT;
-            const net = Math.max(0, value - payoff - sell);
+            const gross = Math.max(0, value - payoff);
+            const sell = value * (num('inListPct') + num('inNegPct')) / 100;
+            const net = Math.max(0, gross - sell);
+            $('outGross').textContent = money(gross);
             $('outSellCosts').textContent = '-' + money(sell);
             $('outNet').textContent = money(net);
 
@@ -279,32 +307,43 @@
             $('tTotal').innerHTML = money(today) + '<span class="text-sm text-slate-400 font-semibold">/mo</span>';
 
             const price = num('inPrice'), rate = num('inRate'), escrow = num('inEscrow');
-            const afterDebts = Math.max(0, net - paidBal);
-            const p3Cushion = Math.min(Math.max(0, num('inP3Cushion')), afterDebts);
+            const paid = Math.min(paidBal, net);
+            const left = Math.max(0, net - paidBal);
+            const a = adj.map(x => x / 100);
 
-            const build = (o) => {
-                const loan = Math.max(0, price - o.down);
-                const p = pi(loan, rate);
-                return Object.assign(o, { loan, pi: p, escrow, house: p + escrow, total: p + escrow + o.debt, today });
-            };
+            const res = [
+                { down: net * (1 - a[0]), cushion: net * a[0], paid: 0,    debt: allPmt },
+                { down: left * a[1],      cushion: left * (1 - a[1]), paid, debt: keptPmt },
+                { down: left * (1 - a[2]), cushion: left * a[2],      paid, debt: keptPmt }
+            ].map(o => {
+                const loan = Math.max(0, price - o.down), p = pi(loan, rate);
+                return Object.assign(o, { loan, pi: p, house: p + escrow, total: p + escrow + o.debt });
+            });
 
-            const paths = [
-                build({ k: 'Path 1', h: 'Down Payment Only', b: 'All net equity goes down on the new home. Every debt payment stays.',
-                        down: net, paid: 0, cushion: 0, debt: allPmt }),
-                build({ k: 'Path 2 · Recommended', h: 'Pay Off + Cushion', b: 'Checked debts paid in full. Zero down (like VA). The rest stays in the bank as your cushion.',
-                        down: 0, paid: Math.min(paidBal, net), cushion: afterDebts, debt: keptPmt, hi: true }),
-                build({ k: 'Path 3', h: 'Pay Off + Down', b: 'Checked debts paid in full, your cushion set aside, and the remainder goes down.',
-                        down: afterDebts - p3Cushion, paid: Math.min(paidBal, net), cushion: p3Cushion, debt: keptPmt })
-            ];
+            const maxC = Math.max(...res.map(r => r.cushion));
+            const minGap = Math.min(...res.map(r => Math.abs(r.total - today)));
 
-            // Badges
-            paths.forEach(p => p.badges = []);
-            const maxC = Math.max(...paths.map(p => p.cushion));
-            if (maxC > 0) paths.filter(p => p.cushion === maxC).forEach(p => p.badges.push({ t: 'Most cushion', cls: 'bg-emerald-500 text-slate-950' }));
-            const minGap = Math.min(...paths.map(p => Math.abs(p.total - today)));
-            paths.filter(p => Math.abs(p.total - today) === minGap).forEach(p => p.badges.push({ t: "Closest to today's budget", cls: 'bg-amber-400 text-slate-950' }));
-
-            $('pathScroller').innerHTML = paths.map(card).join('');
+            res.forEach((r, i) => {
+                $('down' + i).textContent = money(r.down);
+                $('paid' + i).textContent = money(r.paid);
+                $('cush' + i).textContent = money(r.cushion);
+                $('adjv' + i).textContent = adj[i] + '% · ' + money(i === 0 ? r.cushion : i === 1 ? r.down : r.cushion);
+                $('house' + i).textContent = money(r.house);
+                $('pidet' + i).textContent = 'P&I ' + money(r.pi) + ' + taxes/ins ' + money(escrow);
+                $('loan' + i).textContent = 'loan ' + money(r.loan);
+                $('debt' + i).textContent = money(r.debt);
+                $('tot' + i).textContent = money(r.total);
+                const diff = r.total - today;
+                $('diff' + i).textContent = Math.round(diff) === 0 ? 'Same as today'
+                    : money(Math.abs(diff)) + (diff > 0 ? ' more than today' : ' less than today');
+                $('diff' + i).className = 'text-lg font-black ' + (diff > 0 ? 'text-amber-300' : 'text-emerald-300');
+                $('diffbox' + i).className = 'rounded-xl p-3 text-center ' + (diff > 0 ? 'bg-amber-950/30 border border-amber-500/30' : 'bg-emerald-950/40 border border-emerald-500/40');
+                $('today' + i).textContent = 'Today: ' + money(today) + '/mo';
+                const b = [];
+                if (maxC > 0 && r.cushion === maxC) b.push('<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500 text-slate-950">Most cushion</span>');
+                if (Math.abs(r.total - today) === minGap) b.push('<span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-400 text-slate-950">Closest to today’s budget</span>');
+                $('badge' + i).innerHTML = b.join('');
+            });
             renderDots();
         }
 
@@ -319,26 +358,14 @@
             const c = $('pathScroller').children[i];
             if (c) $('pathScroller').scrollTo({ left: c.offsetLeft - 16, behavior: 'smooth' });
         }
-        $('pathScroller').addEventListener('scroll', () => requestAnimationFrame(renderDots));
 
         function copyText(t, btn) {
             const done = () => { const o = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = o, 1500); };
             if (navigator.clipboard) navigator.clipboard.writeText(t).then(done).catch(done); else done();
         }
 
-        function sharePulse() {
-            const value = num('inHomeValue'), payoff = num('inPayoff');
-            const payload = { rate: 2.25, equity: Math.max(0, value - payoff), timestamp: Date.now() };
-            try {
-                const existing = JSON.parse(localStorage.getItem('room_pulse_data') || '[]');
-                existing.push(payload);
-                localStorage.setItem('room_pulse_data', JSON.stringify(existing));
-            } catch (e) {}
-            $('pulseConfirm').classList.remove('hidden');
-            setTimeout(() => $('pulseConfirm').classList.add('hidden'), 3000);
-        }
-
         renderDebts();
+        buildCards();
         calc();
     </script>
 </body>
