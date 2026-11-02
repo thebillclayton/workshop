@@ -1,23 +1,399 @@
-<!-- HOST BIO & COMPLIANCE FOOTER -->
-    <div class="bio-strip">
-      <div class="bio-text">
-        <span class="bio-name">Bill Clayton</span>
-        <span class="bio-nmls">Mortgage Planner · NMLS #151125 · Bill Clayton at Rate</span>
-        <span style="color:#94A3B8; font-size:12px; margin-top:2px;">7830 Veterans Pkwy, Columbus, GA 31909 · Direct: (706) 660-5245 · bill.clayton@rate.com</span>
-        <span style="color:#64748B; font-size:12px; margin-top:2px;">Serving Columbus homeowners for 30+ years · Former Dave Ramsey financial coach</span>
-      </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Next Home. Your Whole Budget. | Live Workshop with Bill Clayton</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #0B111D;
+      --bg-card: #152238;
+      --bg-card-subtle: #1B2B46;
+      --border-card: #223656;
+      --text-main: #FFFFFF;
+      --text-muted: #94A3B8;
+      --brand-red: #D9222A;
+      --brand-gold: #F59E0B;
+      --brand-green: #10B981;
+      --input-bg: #0C1524;
+      --input-border: #2D4263;
+    }
 
-    <!-- LEGAL & LICENSING FOOTER -->
-    <footer style="margin-top: 10px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 11px; line-height: 1.5; color: #64748B; text-align: center;">
-      <p style="margin-bottom: 8px;">
-        Equal Housing Lender | &copy; 2026 Guaranteed Rate, Inc. D/B/A Rate | NMLS ID 2611 | 
-        <a href="https://www.nmlsconsumeraccess.org" target="_blank" rel="noopener" style="color: #94A3B8; text-decoration: underline;">NMLS Consumer Access</a> | Licensing Information: AL - 50410, FL - LO57973, GA - 25748, KY - MC854919, ND - NDMLO151125, TN - 151125
-      </p>
-      <p style="margin-bottom: 8px;">
-        Operating as Guaranteed Rate, Inc. in New York. Guaranteed Rate, Inc. is a private corporation organized under the laws of the State of Delaware. It has no affiliation with the US Department of Housing and Urban Development, the US Department of Veterans Affairs, the US Department of Agriculture, or any other government agency.
-      </p>
-      <p>
-        Please Note: We care about your security and privacy. Please don't include identifying information like account numbers, birth dates, or Social Security numbers in messages to us.
-      </p>
-    </footer>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 60px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .badge-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(217, 34, 42, 0.15);
+      border: 1px solid rgba(217, 34, 42, 0.35);
+      color: #FCA5A5;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      align-self: flex-start;
+      letter-spacing: 0.02em;
+    }
+
+    .header-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #FFFFFF;
+    }
+
+    h1 span {
+      color: var(--brand-gold);
+    }
+
+    p.lead {
+      font-size: clamp(16px, 2.5vw, 18px);
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .meta-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .meta-val {
+      font-size: 15px;
+      font-weight: 700;
+      color: #F1F5F9;
+    }
+
+    .video-wrapper {
+      position: relative;
+      background: #000;
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #101c30 0%, #0a111d 100%);
+      color: var(--text-muted);
+      text-align: center;
+      padding: 24px;
+    }
+
+    .play-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--brand-red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 15px rgba(217, 34, 42, 0.4);
+    }
+
+    .play-icon svg {
+      width: 26px;
+      height: 26px;
+      fill: #FFF;
+      margin-left: 4px;
+    }
+
+    .card-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 18px;
+      padding: clamp(20px, 4vw, 32px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .form-title {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .form-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 580px) {
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      text-align: left;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+
+    input, select {
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 15px;
+      color: #FFF;
+      outline: none;
+      transition: all 0.15s ease;
+      width: 100%;
+    }
+
+    input:focus, select:focus {
+      border-color: #60A5FA;
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+    }
+
+    input::placeholder {
+      color: #64748B;
+    }
+
+    .btn-submit {
+      margin-top: 10px;
+      background: var(--brand-red);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 17px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(217, 34, 42, 0.35);
+      transition: transform 0.1s ease, filter 0.15s ease;
+    }
+
+    .btn-submit:hover {
+      filter: brightness(1.1);
+    }
+
+    .btn-submit:active {
+      transform: scale(0.98);
+    }
+
+    .guarantee-note {
+      font-size: 13px;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .takeaways-section {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .takeaways-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #CBD5E1;
+    }
+
+    .takeaway-card {
+      background: var(--bg-card-subtle);
+      border: 1px solid var(--border-card);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .takeaway-num {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--brand-gold);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .takeaway-content h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: #F8FAFC;
+      margin-bottom: 3px;
+    }
+
+    .takeaway-content p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* HOST BIO & COMPLIANCE FOOTER */
+    .bio-strip {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid var(--border-card);
+      padding-top: 24px;
+    }
+
+    .bio-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+    }
+
+    .bio-name {
+      font-weight: 700;
+      color: #FFF;
+      font-size: 14px;
+    }
+
+    .bio-nmls {
+      color: #94A3B8;
+    }
+
+    /* Confirmation Modal / Screen */
+    #confirmation-view {
+      display: none;
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .success-badge {
+      width: 68px;
+      height: 68px;
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid var(--brand-green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-green);
+      margin-bottom: 4px;
+    }
+
+    .success-badge svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--brand-green);
+    }
+
+    .cal-btn {
+      background: #2563EB;
+      color: #FFF;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    }
+
+    .cal-btn:hover {
+      filter: brightness(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- TOP BADGE -->
+    <div class="badge-bar">
+      <span>●</span> LIVE MOVE-UP BUYER WORKSHOP
+    </div>
