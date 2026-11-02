@@ -3,115 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RSVP · Veterans Move-Up Workshop with Bill Clayton</title>
+<title>RSVP · Move-Up Workshop with Bill Clayton</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0B111D;--card:#152238;--sub:#1B2B46;--line:#223656;--muted:#94A3B8;--red:#D9222A;--gold:#F59E0B;--green:#10B981;--in:#0C1524;--inline:#2D4263}
+  :root{--bg:#0B111D;--card:#152238;--line:#223656;--muted:#94A3B8;--red:#D9222A;--gold:#F59E0B}
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif}
-  body{background:var(--bg);color:#fff;line-height:1.6;min-height:100vh;display:flex;justify-content:center;padding:24px 16px 60px}
-  .wrap{width:100%;max-width:640px;display:flex;flex-direction:column;gap:24px}
+  body{background:var(--bg);color:#fff;line-height:1.6;display:flex;justify-content:center;padding:24px 16px 60px}
+  .wrap{width:100%;max-width:720px;display:flex;flex-direction:column;gap:22px}
   .badge{align-self:flex-start;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);color:var(--gold);padding:6px 14px;border-radius:999px;font-size:13px;font-weight:700;letter-spacing:.04em}
   h1{font-size:clamp(28px,5vw,38px);font-weight:800;line-height:1.15}
   h1 span{color:var(--gold)}
   .lead{color:var(--muted);font-size:17px}
-  .meta{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
-  .ml{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
-  .mv{font-size:15px;font-weight:700}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:clamp(20px,4vw,30px)}
-  .panel h2{font-size:24px;font-weight:800;margin-bottom:4px}
-  .sub{color:var(--muted);font-size:14px;margin-bottom:20px}
-  form{display:flex;flex-direction:column;gap:14px}
-  .g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  @media(max-width:560px){.g2{grid-template-columns:1fr}}
-  label{font-size:13px;font-weight:600;color:#E2E8F0;display:flex;flex-direction:column;gap:6px}
-  input,select{background:var(--in);border:1px solid var(--inline);border-radius:10px;padding:12px 14px;font-size:16px;color:#fff;width:100%}
-  input:focus,select:focus{outline:none;border-color:#60A5FA;box-shadow:0 0 0 3px rgba(96,165,250,.2)}
-  .nights{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .nights label{flex-direction:row;align-items:center;gap:10px;background:var(--in);border:1px solid var(--inline);border-radius:10px;padding:12px 14px;cursor:pointer}
-  .nights input{width:auto}
-  button{margin-top:6px;background:var(--red);color:#fff;border:none;border-radius:12px;padding:16px;font-size:17px;font-weight:700;cursor:pointer}
-  button:disabled{opacity:.6;cursor:wait}
-  .err{display:none;color:#FCA5A5;font-size:14px}
-  .note{color:var(--muted);font-size:13px;text-align:center}
-  #done{display:none;text-align:center;flex-direction:column;align-items:center;gap:14px}
-  #done h2{color:var(--green)}
-  .btn2{display:inline-block;background:var(--sub);border:1px solid var(--line);color:#fff;text-decoration:none;padding:12px 20px;border-radius:12px;font-weight:700}
+  .video{display:flex;justify-content:center}
+  .video iframe{width:100%;max-width:360px;aspect-ratio:9/16;border:1px solid var(--line);border-radius:16px;background:#000}
+  .watch{text-align:center;font-size:14px}
+  .watch a{color:var(--gold);font-weight:700}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;overflow:hidden}
+  .panel h2{font-size:22px;font-weight:800;padding:6px 6px 0}
+  .sub{color:var(--muted);font-size:14px;padding:0 6px 8px}
+  .calendly-inline-widget{min-width:300px;height:720px}
   footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
   footer b{color:#fff}
+  footer a{color:#fff}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="badge">● LIVE VETERANS MOVE-UP WORKSHOP</div>
+  <div class="badge">● LIVE MOVE-UP WORKSHOP ON ZOOM</div>
   <div>
     <h1>Love your rate, but <span>outgrowing your home?</span></h1>
-    <p class="lead">A 30-minute planning session for homeowners sitting on equity who want to see what their options really look like, without giving up their financial footing.</p>
+    <p class="lead">Life changes, and sometimes your home needs to change with it. See how the equity you've built can put you in your next home, and how each of three clear paths fits your whole monthly budget. Free, no application, no pressure.</p>
   </div>
 
-  <div class="meta">
-    <div><div class="ml">When</div><div class="mv">Tue, Nov 10 or Tue, Nov 24<br>6:00 PM ET</div></div>
-    <div><div class="ml">Where</div><div class="mv">Live on Zoom</div></div>
-    <div><div class="ml">Cost</div><div class="mv">Free · No application</div></div>
+  <div class="video">
+    <iframe src="https://myoc.io/v/2rdlg2EJ" title="A quick note from Bill" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
+  <p class="watch">Video not playing? <a href="https://myoc.io/v/2rdlg2EJ" target="_blank" rel="noopener">Watch Bill's 1-minute note here</a></p>
 
   <div class="panel">
-    <div id="formView">
-      <h2>Reserve Your Seat</h2>
-      <p class="sub">No credit check. No loan application. Just a clear plan.</p>
-      <form id="f">
-        <div class="g2">
-          <label>First name<input name="first" autocomplete="given-name" required></label>
-          <label>Last name<input name="last" autocomplete="family-name" required></label>
-        </div>
-        <div class="g2">
-          <label>Email<input name="email" type="email" autocomplete="email" required></label>
-          <label>Cell phone (for a text reminder)<input name="phone" type="tel" autocomplete="tel" required></label>
-        </div>
-        <div>
-          <div class="ml" style="margin-bottom:6px">Which night?</div>
-          <div class="nights">
-            <label><input type="radio" name="session" value="Tue Nov 10, 6 PM" required> Tue, Nov 10</label>
-            <label><input type="radio" name="session" value="Tue Nov 24, 6 PM"> Tue, Nov 24</label>
-          </div>
-        </div>
-        <button id="go" type="submit">Save My Seat</button>
-        <p class="err" id="err">Something went wrong saving your seat. Please try again, or text Bill at (706) 660-5245.</p>
-      </form>
-    </div>
-    <div id="done">
-      <h2>✓ Seat Confirmed!</h2>
-      <p>Thanks, <b id="dn"></b>. You're on the list for <b id="ds"></b>. Bill will text you the Zoom link before the session.</p>
-      <a class="btn2" href="https://workshop.callbillclayton.com/index.html">Open Attendee Worksheet</a>
-    </div>
+    <h2>Save Your Seat</h2>
+    <p class="sub">Pick your night below. You'll get a confirmation and calendar invite with the Zoom link right away.</p>
+    <div class="calendly-inline-widget" data-url="https://calendly.com/billclayton-rate/workshop?hide_gdpr_banner=1"></div>
   </div>
 
-  <p class="note">Your details are used only for workshop reminders and follow-up from Bill.</p>
-  <footer><b>Bill Clayton</b> · Mortgage Planner · NMLS #151125 · Team Clayton at Rate<br>Serving Columbus, Fort Benning and Phenix City families for 30+ years</footer>
+  <footer><b>Bill Clayton</b> · Mortgage Planner · NMLS #151125 · Team Clayton at Rate<br>Questions? Call or text <a href="tel:+17066605245">(706) 660-5245</a><br>Serving Columbus, Fort Benning and Phenix City families for 30+ years</footer>
 </div>
-
-<script>
-  // Apps Script web app: Workshop RSVP Receiver
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwY4aN-Ntgo4IoRkXMLCN1vp1XENNBqvd1EvgC2a9Ry2krLw3abhYzrnpzK5MktZlYdNg/exec';
-  const f = document.getElementById('f'), go = document.getElementById('go'), err = document.getElementById('err');
-  f.addEventListener('submit', async e => {
-    e.preventDefault();
-    err.style.display = 'none'; go.disabled = true; go.textContent = 'Saving your seat…';
-    const d = Object.fromEntries(new FormData(f).entries());
-    const payload = { name: (d.first.trim() + ' ' + d.last.trim()).trim(), email: d.email.trim(), phone: d.phone.trim(), session: d.session, source: 'rsvp page' };
-    try {
-      const r = await fetch(SCRIPT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) });
-      const j = await r.json();
-      if (!j.ok) throw new Error(j.error || 'not saved');
-      document.getElementById('dn').textContent = d.first.trim();
-      document.getElementById('ds').textContent = d.session;
-      document.getElementById('formView').style.display = 'none';
-      document.getElementById('done').style.display = 'flex';
-    } catch (x) {
-      err.style.display = 'block'; go.disabled = false; go.textContent = 'Save My Seat';
-    }
-  });
-</script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </body>
 </html>
