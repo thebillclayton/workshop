@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
   :root{--bg:#0B111D;--card:#152238;--line:#223656;--muted:#94A3B8;--red:#D9222A;--gold:#F59E0B}
   *{box-sizing:border-box;margin:0;padding:0;font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif}
@@ -16,14 +17,16 @@
   h1{font-size:clamp(28px,5vw,38px);font-weight:800;line-height:1.15}
   h1 span{color:var(--gold)}
   .lead{color:var(--muted);font-size:17px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px}
+  .when{display:flex;flex-wrap:wrap;gap:6px 18px;font-weight:700}
+  .when span{color:var(--muted);font-weight:600}
+  .seat{display:block;text-align:center;background:var(--red);color:#fff;text-decoration:none;border-radius:12px;padding:16px;font-size:18px;font-weight:800}
+  .seat small{display:block;font-size:13px;font-weight:600;opacity:.9}
+  .sub{color:var(--muted);font-size:13px;text-align:center}
   .video{display:flex;justify-content:center}
   .video iframe{width:100%;max-width:360px;aspect-ratio:9/16;border:1px solid var(--line);border-radius:16px;background:#000}
   .watch{text-align:center;font-size:14px}
   .watch a{color:var(--gold);font-weight:700}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;overflow:hidden}
-  .panel h2{font-size:22px;font-weight:800;padding:6px 6px 0}
-  .sub{color:var(--muted);font-size:14px;padding:0 6px 8px}
-  .calendly-inline-widget{min-width:300px;height:720px}
   footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:18px}
   footer b{color:#fff}
   footer a{color:#fff}
@@ -37,16 +40,20 @@
     <p class="lead">Life changes, and sometimes your home needs to change with it. See how the equity you've built can put you in your next home, and how each of three clear paths fits your whole monthly budget. Free, no application, no pressure.</p>
   </div>
 
+  <div class="panel">
+    <div class="when">Tuesday, November 10 · 6:00 PM ET <span>Live on Zoom</span></div>
+    <a class="seat" href="https://calendly.com/billclayton-rate/workshop/2026-11-10T23:00:00Z?hide_gdpr_banner=1" target="_blank" rel="noopener"
+       onclick="if(window.Calendly){Calendly.initPopupWidget({url:this.href});return false;}">
+      Save My Seat for Nov 10
+      <small>Takes 30 seconds</small>
+    </a>
+    <p class="sub">You'll get a confirmation and calendar invite with the Zoom link right away.</p>
+  </div>
+
   <div class="video">
     <iframe src="https://myoc.io/v/2rdlg2EJ" title="A quick note from Bill" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe>
   </div>
   <p class="watch">Video not playing? <a href="https://myoc.io/v/2rdlg2EJ" target="_blank" rel="noopener">Watch Bill's 1-minute note here</a></p>
-
-  <div class="panel">
-    <h2>Save Your Seat</h2>
-    <p class="sub">Pick your night below. You'll get a confirmation and calendar invite with the Zoom link right away.</p>
-    <div class="calendly-inline-widget" data-url="https://calendly.com/billclayton-rate/workshop?hide_gdpr_banner=1"></div>
-  </div>
 
   <footer><b>Bill Clayton</b> · Mortgage Planner · NMLS #151125 · Team Clayton at Rate<br>Questions? Call or text <a href="tel:+17066605245">(706) 660-5245</a><br>Serving Columbus, Fort Benning and Phenix City families for 30+ years</footer>
 </div>
