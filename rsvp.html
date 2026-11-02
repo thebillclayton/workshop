@@ -1,122 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Next Home. Your Whole Budget. | Live Workshop with Bill Clayton</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #0B111D; --card: #152238; --card-subtle: #1B2B46; --border: #223656;
-      --text: #FFFFFF; --muted: #94A3B8; --red: #D9222A; --gold: #F59E0B; --green: #10B981;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
-    body { background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; padding: 24px 16px 60px; display: flex; flex-direction: column; align-items: center; }
-    .container { width: 100%; max-width: 740px; display: flex; flex-direction: column; gap: 24px; }
-    .badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(217,34,42,0.15); border: 1px solid rgba(217,34,42,0.35); color: #FCA5A5; padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 700; width: fit-content; }
-    h1 { font-size: clamp(26px, 4.5vw, 38px); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; }
-    h1 span { color: var(--gold); }
-    p.lead { font-size: clamp(15px, 2.5vw, 17px); color: var(--muted); }
-    .meta-bar { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
-    .meta-item { display: flex; flex-direction: column; }
-    .meta-lbl { font-size: 11px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
-    .meta-val { font-size: 14px; font-weight: 700; color: #F1F5F9; }
-    .video-box { aspect-ratio: 16/9; background: linear-gradient(145deg, #101c30, #0a111d); border: 1px solid var(--border); border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
-    .play-btn { width: 56px; height: 56px; background: var(--red); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: clamp(20px, 4vw, 30px); }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    @media(max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
-    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
-    label { font-size: 13px; font-weight: 600; color: #E2E8F0; }
-    input, select { background: #0C1524; border: 1px solid #2D4263; border-radius: 8px; padding: 12px; font-size: 15px; color: #FFF; width: 100%; outline: none; }
-    input:focus, select:focus { border-color: #60A5FA; }
-    .submit-btn { width: 100%; background: var(--red); color: #FFF; border: none; border-radius: 10px; padding: 15px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 8px; }
-    .takeaway { background: var(--card-subtle); border: 1px solid var(--border); border-radius: 10px; padding: 14px; display: flex; gap: 12px; margin-top: 10px; }
-    .num { background: rgba(245,158,11,0.15); color: var(--gold); border: 1px solid rgba(245,158,11,0.3); width: 26px; height: 26px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 13px; flex-shrink: 0; }
-    .bio-strip { border-top: 1px solid var(--border); padding-top: 20px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
-    footer { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 16px; font-size: 11px; color: #64748B; text-align: center; line-height: 1.5; }
-    #confirmation-view { display: none; text-align: center; flex-direction: column; align-items: center; gap: 16px; }
-    .cal-btn { background: #2563EB; color: #FFF; text-decoration: none; padding: 12px 20px; border-radius: 10px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP · Veterans Move-Up Workshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
 </head>
-<body>
-  <div class="container">
-    <div class="badge">● LIVE MOVE-UP BUYER WORKSHOP</div>
-    <div>
-      <h1>Love your rate, but <span>outgrowing your home?</span></h1>
-      <p class="lead" style="margin-top: 8px;">A 30-minute workshop looking at the whole picture: how home equity, monthly household cash flow, and lifestyle changes work together when your current space no longer fits.</p>
-    </div>
-    <div class="meta-bar">
-      <div class="meta-item"><span class="meta-lbl">When</span><span class="meta-val">Tuesday, Nov 10, 2026 · 6:00 PM ET</span></div>
-      <div class="meta-item"><span class="meta-lbl">Where</span><span class="meta-val">Live via Zoom (Private Link)</span></div>
-      <div class="meta-item"><span class="meta-lbl">Format</span><span class="meta-val">30-Min Demo + Real Numbers</span></div>
-    </div>
-    <div class="video-box">
-      <div class="play-btn"><svg style="width:24px;height:24px;fill:#FFF;margin-left:3px;" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      <h3 style="font-size:16px;color:#FFF;">A Quick 60-Second Note from Bill</h3>
-      <p style="font-size:13px;color:var(--muted);margin-top:4px;">Why a 3% mortgage rate is only one line on your balance sheet.</p>
-    </div>
-    <div class="card">
-      <div id="form-view">
-        <h2 style="font-size:20px;font-weight:800;margin-bottom:4px;">Reserve Your Seat</h2>
-        <p style="font-size:14px;color:var(--muted);margin-bottom:18px;">Interactive 30-minute workshop with live Q&A. Grab your link to follow along on Zoom.</p>
-        <form id="rsvpForm">
-          <div class="form-grid">
-            <div class="form-group"><label>First Name</label><input type="text" id="firstName" placeholder="Bill" required></div>
-            <div class="form-group"><label>Last Name</label><input type="text" id="lastName" placeholder="Clayton" required></div>
-          </div>
-          <div class="form-grid">
-            <div class="form-group"><label>Email Address</label><input type="email" id="email" placeholder="you@email.com" required></div>
-            <div class="form-group"><label>Cell Phone</label><input type="tel" id="phone" placeholder="(706) 660-5245" required></div>
-          </div>
-          <div class="form-group">
-            <label>Where are you in life right now?</label>
-            <select id="lifeStage">
-              <option value="Growing family?">Growing family? (Need more bedrooms, yard, school zone)</option>
-              <option value="I'd love a home like that!">I'd love a home like that! (Family home to forever home)</option>
-              <option value="Too big for the two of us?">Too big for the two of us? (Empty nest / right-sizing)</option>
-              <option value="Just curious">Just curious what our equity could do</option>
-            </select>
-          </div>
-          <button type="submit" class="submit-btn" id="submitBtn">Save My Spot on Zoom</button>
-          <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:10px;">Live group session with open Q&A · 30 minutes</p>
-        </form>
-      </div>
-      <div id="confirmation-view">
-        <div style="width:54px;height:54px;border-radius:50%;background:rgba(16,185,129,0.15);border:2px solid var(--green);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
-          <svg style="width:28px;height:28px;fill:var(--green);" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Header Navigation -->
+    <header class="bg-slate-900/95 border-b border-amber-500/30 sticky top-0 z-50 backdrop-blur shadow-xl">
+        <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Veterans Move-Up Workshop</span>
+            </div>
+            <span class="text-xs text-slate-400 font-medium">Bill Clayton · NMLS #151125</span>
         </div>
-        <h2 style="font-size:22px;">You're Confirmed, <span id="confName">there</span>!</h2>
-        <p style="font-size:14px;color:var(--muted);margin-bottom:12px;">We sent your calendar invite and Zoom link to <strong id="confEmail" style="color:#FFF;">your email</strong>.</p>
-        <div style="background:var(--card-subtle);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:left;font-size:13px;width:100%;">
-          <p><strong>Zoom Meeting ID:</strong> 815 229 8728</p>
-          <p style="margin-top:4px;"><strong>Link:</strong> <a href="https://us02web.zoom.us/j/8152298728" target="_blank" style="color:#60A5FA;">https://us02web.zoom.us/j/8152298728</a></p>
+    </header>
+
+    <!-- Main Form Container -->
+    <main class="max-w-lg w-full mx-auto px-4 py-8">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl space-y-6">
+            
+            <div class="space-y-2 text-center">
+                <span class="text-[11px] font-bold tracking-widest uppercase text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
+                    Live Workshop Seat Reservation
+                </span>
+                <h1 class="text-2xl sm:text-3xl font-black text-white pt-2">Reserve Your Seat</h1>
+                <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                    Enter your details below to receive workshop reminders, calendar invites, and your personalized calculation worksheet.
+                </p>
+            </div>
+
+            <!-- Form -->
+            <form id="rsvpForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="space-y-4">
+                
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5" for="name">Full Name *</label>
+                    <input 
+                        type="text" 
+                        id="name" 
+                        name="name" 
+                        required 
+                        placeholder="e.g., SFC John Miller" 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 font-medium text-sm transition"
+                    >
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5" for="email">Email Address *</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        required 
+                        placeholder="john.miller@example.com" 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 font-medium text-sm transition"
+                    >
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5" for="phone">Mobile Phone (for SMS Reminders) *</label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        required 
+                        placeholder="(706) 555-0199" 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500 font-medium text-sm transition"
+                    >
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5" for="branch">Service Branch / Status (Optional)</label>
+                    <select 
+                        id="branch" 
+                        name="branch" 
+                        class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-amber-500 font-medium text-sm transition"
+                    >
+                        <option value="Active Duty">Active Duty Military</option>
+                        <option value="Veteran">Veteran / Retiree</option>
+                        <option value="Military Spouse">Military Spouse / Family</option>
+                        <option value="Civilian / DoD">DoD Civilian / Other</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    id="submitBtn"
+                    class="w-full mt-4 py-3.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm tracking-wide shadow-lg transition duration-150 transform active:scale-[0.98]"
+                >
+                    Confirm My Reservation →
+                </button>
+            </form>
+
+            <!-- Success State -->
+            <div id="successMsg" class="hidden text-center p-6 bg-emerald-950/40 border border-emerald-500/40 rounded-xl space-y-2">
+                <div class="text-emerald-400 text-3xl font-bold">✓ Seat Confirmed!</div>
+                <p class="text-xs text-slate-300">
+                    We've saved your spot. Workshop details and SMS reminders will be sent prior to the session.
+                </p>
+                <div class="pt-3">
+                    <a href="index.html" class="inline-block px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold rounded-lg transition">
+                        Open Attendee Worksheet
+                    </a>
+                </div>
+            </div>
+
+            <p class="text-[11px] text-center text-slate-500 pt-2">
+                🔒 Your contact details are kept strictly confidential for workshop scheduling and reminder notifications only.
+            </p>
+
         </div>
-        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Move-Up+Homebuyer+Workshop+with+Bill+Clayton&dates=20261110T230000Z/20261110T233000Z&details=Live+Zoom+Workshop+hosted+by+Bill+Clayton.+Zoom+Link:+https://us02web.zoom.us/j/8152298728&location=Zoom" target="_blank" class="cal-btn">Add to Google Calendar</a>
-      </div>
-    </div>
-    <div>
-      <h3 style="font-size:16px;color:#CBD5E1;margin-bottom:6px;">What we will cover in 30 minutes:</h3>
-      <div class="takeaway"><div class="num">1</div><div><strong style="color:#FFF;font-size:14px;">The Whole Monthly Outflow</strong><p style="font-size:13px;color:var(--muted);">Total outgoing cash—mortgage plus cars, student loans, and cards—so you see your true living cost.</p></div></div>
-      <div class="takeaway"><div class="num">2</div><div><strong style="color:#FFF;font-size:14px;">The Three Equity Paths</strong><p style="font-size:13px;color:var(--muted);">Using equity to wipe out debt, keep total monthly outflow nearly flat, and keep a cash cushion in savings.</p></div></div>
-      <div class="takeaway"><div class="num">3</div><div><strong style="color:#FFF;font-size:14px;">Your Freedom Point</strong><p style="font-size:13px;color:var(--muted);">How a strategic move can actually speed up your timeline to be 100% mortgage-free.</p></div></div>
-    </div>
-    <div class="bio-strip">
-      <strong style="color:#FFF;font-size:14px;">Bill Clayton</strong>
-      <span style="color:var(--muted);">Mortgage Planner · NMLS #151125 · Bill Clayton at Rate</span>
-      <span style="color:#64748B;font-size:12px;">7830 Veterans Pkwy, Columbus, GA 31909 · Direct: (706) 660-5245 · bill.clayton@rate.com</span>
-      <span style="color:#64748B;font-size:12px;">Serving Columbus homeowners for 30+ years · Former Dave Ramsey financial coach</span>
-    </div>
-    <footer>
-      <p style="margin-bottom:6px;">Equal Housing Lender | © 2026 Guaranteed Rate, Inc. D/B/A Rate | NMLS ID 2611 | <a href="https://www.nmlsconsumeraccess.org" target="_blank" style="color:#94A3B8;">NMLS Consumer Access</a> | Licensing: AL - 50410, FL - LO57973, GA - 25748, KY - MC854919, ND - NDMLO151125, TN - 151125</p>
-      <p style="margin-bottom:6px;">Operating as Guaranteed Rate, Inc. in New York. Guaranteed Rate, Inc. is a private corporation organized under Delaware law. It has no affiliation with HUD, VA, USDA, or any government agency.</p>
-      <p>Please Note: We care about security and privacy. Please do not include identifying information like account numbers, birth dates, or Social Security numbers in messages to us.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-slate-500 text-xs border-t border-slate-900">
+        <div>Bill Clayton · Rate Mortgage · NMLS #151125</div>
+        <div class="text-[11px] text-slate-600 mt-1">Fort Moore &amp; Columbus Real Estate &amp; Mortgage Strategy</div>
     </footer>
-  </div>
-  <script>
-    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = document.getElementById('submitBtn');
-      btn.innerText = 'Reserving your
+
+    <!-- Form Handler Script -->
+    <script>
+        const form = document.getElementById('rsvpForm');
+        const successMsg = document.getElementById('successMsg');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            // Check if endpoint is still default placeholder
+            if (form.action.includes('YOUR_FORMSPREE_ID')) {
+                e.preventDefault();
+                // Store in browser locally for demonstration/testing
+                const attendee = {
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    branch: document.getElementById('branch').value,
+                    date: new Date().toISOString()
+                };
+                const existing = JSON.parse(localStorage.getItem('workshop_rsvps') || '[]');
+                existing.push(attendee);
+                localStorage.setItem('workshop_rsvps', JSON.stringify(existing));
+
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+                return;
+            }
+
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Securing Spot...";
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                } else {
+                    alert('There was a problem submitting your RSVP. Please try again.');
+                    submitBtn.disabled = false;
+                    submitBtn.innerText = "Confirm My Reservation →";
+                }
+            } catch (err) {
+                alert('Connection error. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Confirm My Reservation →";
+            }
+        });
+    </script>
+</body>
+</html>
