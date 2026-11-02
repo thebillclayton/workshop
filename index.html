@@ -3,275 +3,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veterans Move-Up Workshop · Attendee Worksheet</title>
+    <title>Move-Up Workshop · Attendee Worksheet</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        input[type=number]::-webkit-inner-spin-button { opacity: .4; }
+        .no-bar::-webkit-scrollbar { display: none; }
+        .no-bar { scrollbar-width: none; }
+        .path-card { scroll-snap-align: center; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen pb-20">
 
     <!-- Header -->
     <header class="bg-slate-900/95 border-b border-amber-500/30 sticky top-0 z-50 backdrop-blur shadow-xl">
-        <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-2">
                 <div class="w-2.5 h-2.5 rounded-full bg-emerald-400"></div>
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Veterans Move-Up Workshop</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Move-Up Workshop</span>
             </div>
             <span class="text-xs text-slate-400 font-medium">Bill Clayton · NMLS #151125</span>
         </div>
     </header>
 
-    <main class="max-w-xl mx-auto px-4 pt-6 space-y-6">
+    <main class="max-w-5xl mx-auto px-4 pt-6 space-y-6">
 
-        <!-- Welcome Banner -->
-        <section class="text-center space-y-2">
+        <section class="text-center space-y-2 max-w-xl mx-auto">
             <h1 class="text-2xl md:text-3xl font-black text-white">Your Next Home. The Whole Budget.</h1>
             <p class="text-xs text-slate-400 leading-relaxed">
-                Plug in your numbers below to see how selling your current home and eliminating high-interest debt changes your monthly bottom line.
+                Same house, same price, three ways to use your equity. Change any number to make it yours.
             </p>
         </section>
 
-        <!-- Step 1: Equity Harvest -->
+        <div class="grid md:grid-cols-2 gap-6 md:items-start">
+
+            <!-- Step 1: Equity -->
+            <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-lg">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400">Step 1 · Your Home Today</h2>
+                    <span class="text-[10px] text-slate-400">Estimates</span>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Home Value ($)</label>
+                        <input type="number" inputmode="numeric" id="inHomeValue" value="415832" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Mortgage Payoff ($)</label>
+                        <input type="number" inputmode="numeric" id="inPayoff" value="234980" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-[11px] font-semibold text-slate-400 mb-1">Today's House Payment ($/mo, with taxes and insurance)</label>
+                        <input type="number" inputmode="numeric" id="inTodayHouse" value="1376" step="10" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <span class="text-[10px] text-slate-400 block mb-0.5">Est. Selling Costs (about 6.7%)</span>
+                        <div id="outSellCosts" class="text-sm font-bold text-rose-400">-$27,893</div>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl p-3">
+                        <span class="text-[10px] text-emerald-300 block mb-0.5 uppercase tracking-wider font-semibold">Net Equity to Work With</span>
+                        <div id="outNet" class="text-base font-black text-emerald-400">$152,959</div>
+                    </div>
+                </div>
+
+                <button onclick="sharePulse()" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition">
+                    📡 Share Anonymous Numbers with Room
+                </button>
+                <div id="pulseConfirm" class="text-center text-[11px] text-emerald-400 hidden">✓ Shared anonymously</div>
+            </section>
+
+            <!-- Step 2: Debts -->
+            <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-lg">
+                <div class="border-b border-slate-800 pb-3">
+                    <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400">Step 2 · Your Other Debts</h2>
+                    <p class="text-[11px] text-slate-400">Check the ones you'd pay off with equity (Paths 2 and 3).</p>
+                </div>
+
+                <div class="grid grid-cols-[auto_1fr_5.5rem_4.5rem_auto] gap-x-2 text-[10px] text-slate-500 font-semibold px-1">
+                    <span>Pay off</span><span>Debt</span><span>Balance</span><span>$/mo</span><span></span>
+                </div>
+                <div id="debtList" class="space-y-2"></div>
+
+                <button onclick="addDebt()" class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200">+ Add a debt</button>
+
+                <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-800">
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
+                        <span class="text-[10px] text-slate-400 block mb-0.5">Checked to Pay Off</span>
+                        <div id="outPaidBal" class="text-sm font-bold text-amber-400">$113,005</div>
+                    </div>
+                    <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl p-3">
+                        <span class="text-[10px] text-emerald-300 block mb-0.5 uppercase tracking-wider font-semibold">Payments That Go Away</span>
+                        <div id="outPaidPmt" class="text-base font-black text-emerald-400">$2,094/mo</div>
+                    </div>
+                </div>
+                <div id="debtWarn" class="hidden text-[11px] text-rose-300 bg-rose-950/40 border border-rose-500/30 rounded-lg p-2"></div>
+            </section>
+        </div>
+
+        <!-- Step 3: Next home -->
         <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-lg">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400">Step 1 · Your Current Home & Equity</h2>
-                <span class="text-[10px] text-slate-400">Estimated Values</span>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3">
-                <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Est. Home Value ($)</label>
-                    <input type="number" id="inputHomeValue" value="415000" step="5000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calculateAll()">
-                </div>
-                <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Mortgage Payoff ($)</label>
-                    <input type="number" id="inputPayoff" value="234148" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calculateAll()">
-                </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 pt-2">
-                <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
-                    <span class="text-[10px] text-slate-400 block mb-0.5">Est. Selling Costs (6.71%)</span>
-                    <div id="dispDeductions" class="text-sm font-bold text-rose-400">-$27,893</div>
-                </div>
-                <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl p-3">
-                    <span class="text-[10px] text-emerald-300 block mb-0.5 uppercase tracking-wider font-semibold">Net Cash in Hand</span>
-                    <div id="dispNetEquity" class="text-base font-black text-emerald-400">$152,959</div>
-                </div>
-            </div>
-
-            <!-- Anonymous Pulse Button -->
-            <button onclick="sharePulse()" id="btnSharePulse" class="w-full py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 transition flex items-center justify-center gap-2">
-                <span>📡 Share Anonymous Numbers with Room</span>
-            </button>
-            <div id="pulseConfirm" class="text-center text-[11px] text-emerald-400 hidden">✓ Shared anonymously with presenter console</div>
-        </section>
-
-        <!-- Step 2: Debt Review & Payoff -->
-        <section class="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 space-y-4 shadow-lg">
-            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-                <div>
-                    <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400">Step 2 · Monthly Debt Elimination</h2>
-                    <p class="text-[11px] text-slate-400">Check off debts you want wiped out using sale proceeds.</p>
-                </div>
-                <button onclick="addDebtRow()" class="px-2.5 py-1 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-[10px] font-semibold text-slate-200 rounded-lg transition">+ Add</button>
-            </div>
-
-            <div id="debtListContainer" class="space-y-2.5">
-                <!-- Populated by JS -->
-            </div>
-
-            <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-800">
-                <div class="bg-slate-950 border border-slate-800 rounded-xl p-3">
-                    <span class="text-[10px] text-slate-400 block mb-0.5">Proceeds Used for Debt</span>
-                    <div id="dispDebtsPaidTotal" class="text-sm font-bold text-amber-400">$42,959</div>
-                </div>
-                <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-xl p-3">
-                    <span class="text-[10px] text-emerald-300 block mb-0.5 uppercase tracking-wider font-semibold">Monthly Cash Flow Freed</span>
-                    <div id="dispMonthlyFreed" class="text-base font-black text-emerald-400">+$1,145/mo</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Step 3: Move-Up Whole-Budget Result -->
-        <section class="bg-slate-900/80 border border-emerald-500/30 rounded-2xl p-5 space-y-4 shadow-lg">
             <div class="border-b border-slate-800 pb-3">
-                <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400">Step 3 · Move-Up Home & Whole Budget</h2>
-                <p class="text-[11px] text-slate-400">Reinvesting remaining equity into your target home purchase.</p>
+                <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400">Step 3 · Your Next Home</h2>
             </div>
-
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Target Price ($)</label>
-                    <input type="number" id="inputTargetPrice" value="550000" step="5000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calculateAll()">
+                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Price ($)</label>
+                    <input type="number" inputmode="numeric" id="inPrice" value="515000" step="5000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
                 </div>
                 <div>
-                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Down Payment ($)</label>
-                    <input type="number" id="inputDownPayment" value="110000" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-emerald-400 font-bold text-sm" oninput="calculateAll()">
+                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Rate (%), 30-yr</label>
+                    <input type="number" inputmode="decimal" id="inRate" value="6.75" step="0.125" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
                 </div>
-            </div>
-
-            <!-- Comparison Block -->
-            <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 space-y-3">
-                <div class="flex justify-between items-center text-xs">
-                    <span class="text-slate-400">Old Situation (Mortgage + Debt)</span>
-                    <span id="dispCurrentTotalOutflow" class="font-bold text-slate-300">$2,685/mo</span>
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Taxes + Insurance ($/mo)</label>
+                    <input type="number" inputmode="numeric" id="inEscrow" value="675" step="25" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
                 </div>
-                <div class="flex justify-between items-center text-xs">
-                    <span class="text-slate-400">New Target Mortgage (est. 6.5% PITI)</span>
-                    <span id="dispNewMortgage" class="font-bold text-white">$3,331/mo</span>
+                <div>
+                    <label class="block text-[11px] font-semibold text-slate-400 mb-1">Path 3 Cushion to Keep ($)</label>
+                    <input type="number" inputmode="numeric" id="inP3Cushion" value="0" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white font-bold text-sm" oninput="calc()">
                 </div>
-                <div class="flex justify-between items-center text-xs text-emerald-400">
-                    <span>Monthly Debt Payments Wiped</span>
-                    <span id="dispDebtOffsetCredit">-$1,145/mo</span>
-                </div>
-                <div class="flex justify-between items-center border-t border-slate-800 pt-2 font-black">
-                    <span class="text-xs text-white uppercase tracking-wider">Net Effective Monthly Impact</span>
-                    <span id="dispEffectiveNetBudget" class="text-lg text-emerald-400">$2,186/mo</span>
-                </div>
-            </div>
-
-            <div class="bg-emerald-950/30 border border-emerald-500/20 rounded-xl p-3 text-center">
-                <p class="text-[11px] text-emerald-300/90 leading-tight">
-                    By eliminating consumer debt with home equity, your household budget stays comfortable even with a higher rate on your dream home.
-                </p>
             </div>
         </section>
 
-        <!-- Footer / Contact -->
-        <footer class="text-center pt-2 space-y-1 text-slate-500 text-xs">
-            <div>Questions on your specific numbers?</div>
-            <div class="text-slate-300 font-semibold">Bill Clayton · Rate Mortgage · 706-555-0100</div>
-        </footer>
+        <!-- Today baseline -->
+        <section class="bg-slate-900 border border-slate-700 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+            <div>
+                <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">Today's Budget</div>
+                <div class="text-xs text-slate-400 mt-0.5">
+                    House <span id="tHouse" class="text-white font-semibold">$1,376</span>
+                    + other debts <span id="tDebt" class="text-white font-semibold">$2,094</span>
+                </div>
+            </div>
+            <div class="text-right">
+                <div id="tTotal" class="text-2xl font-black text-white">$3,470<span class="text-sm text-slate-400 font-semibold">/mo</span></div>
+            </div>
+        </section>
+
+        <!-- Three paths -->
+        <section class="space-y-3">
+            <div class="flex items-end justify-between">
+                <div>
+                    <h2 class="text-sm font-black uppercase tracking-wider text-white">Three Ways to Use Your Equity</h2>
+                    <p class="text-[11px] text-slate-400">Each total is compared to today's budget.</p>
+                </div>
+                <span class="md:hidden text-[10px] text-amber-400 font-semibold">Swipe →</span>
+            </div>
+
+            <div id="pathScroller" class="no-bar flex md:grid md:grid-cols-3 gap-4 overflow-x-auto md:overflow-visible snap-x snap-mandatory pb-2 -mx-4 px-4 md:mx-0 md:px-0">
+                <!-- cards by JS -->
+            </div>
+            <div id="dots" class="flex md:hidden justify-center gap-2"></div>
+        </section>
+
+        <!-- Invite -->
+        <section class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-5 text-center space-y-3">
+            <p class="text-sm text-emerald-100 font-semibold">None of these is automatically right. The right one fits your goals.</p>
+            <p class="text-xs text-slate-300">If you'd like to see this with your real numbers, let's set up a short planning conversation. No application, no pressure.</p>
+            <div class="flex flex-wrap justify-center gap-2 pt-1">
+                <a href="tel:+17066605245" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-bold">📞 Call or text Bill · 706-660-5245</a>
+                <button onclick="copyText('706-660-5245', this)" class="px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">Copy number</button>
+                <a href="mailto:bill.clayton@rate.com?subject=Move-Up%20Workshop%20-%20my%20plan" class="px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">✉️ bill.clayton@rate.com</a>
+            </div>
+        </section>
 
     </main>
 
     <script>
+        // Master example: Prelim Est (Video 10-16-26)
+        const SELL_PCT = 27893 / 415832; // ties net equity to $152,959 at $415,832 value
         let debts = [
-            { id: 1, name: "Auto Loan (Truck)", balance: 24500, payment: 585, payoff: true },
-            { id: 2, name: "Credit Cards", balance: 11459, payment: 360, payoff: true },
-            { id: 3, name: "Personal Loan", balance: 7000, payment: 200, payoff: true }
+            { name: "Car Loan",      balance: 24602,   payment: 493, payoff: true },
+            { name: "Car Loan",      balance: 24602,   payment: 493, payoff: true },
+            { name: "Credit Card",   balance: 6735,    payment: 191, payoff: true },
+            { name: "Credit Card",   balance: 6735,    payment: 191, payoff: true },
+            { name: "Student Loan",  balance: 19528.5, payment: 215, payoff: true },
+            { name: "Student Loan",  balance: 19528.5, payment: 215, payoff: true },
+            { name: "Personal Loan", balance: 5637,    payment: 148, payoff: true },
+            { name: "Personal Loan", balance: 5637,    payment: 148, payoff: true }
         ];
 
-        function renderDebts() {
-            const container = document.getElementById('debtListContainer');
-            container.innerHTML = '';
+        const $ = id => document.getElementById(id);
+        const num = id => parseFloat($(id).value) || 0;
+        const money = v => (v < 0 ? '-$' : '$') + Math.round(Math.abs(v)).toLocaleString();
+        const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-            debts.forEach((debt, index) => {
-                const row = document.createElement('div');
-                row.className = "flex items-center justify-between p-2.5 bg-slate-950 border border-slate-800 rounded-xl gap-2";
-                row.innerHTML = `
-                    <div class="flex items-center space-x-2.5 flex-1 min-w-0">
-                        <input type="checkbox" ${debt.payoff ? 'checked' : ''} onchange="toggleDebt(${index})" class="w-4 h-4 rounded text-emerald-500 bg-slate-900 border-slate-700">
-                        <div class="truncate">
-                            <span class="text-xs font-semibold text-white block truncate">${debt.name}</span>
-                            <span class="text-[10px] text-slate-400">$${debt.balance.toLocaleString()} bal · $${debt.payment}/mo</span>
-                        </div>
-                    </div>
-                    <button onclick="removeDebt(${index})" class="text-slate-500 hover:text-rose-400 text-xs px-1.5">✕</button>
-                `;
-                container.appendChild(row);
-            });
-        }
-
-        function toggleDebt(index) {
-            debts[index].payoff = !debts[index].payoff;
-            calculateAll();
-        }
-
-        function addDebtRow() {
-            const name = prompt("Debt name (e.g., Credit Card, Car Loan):", "Car Loan");
-            if (!name) return;
-            const bal = parseFloat(prompt("Total balance ($):", "15000")) || 0;
-            const pmt = parseFloat(prompt("Monthly minimum payment ($):", "350")) || 0;
-            debts.push({ id: Date.now(), name: name, balance: bal, payment: pmt, payoff: true });
-            renderDebts();
-            calculateAll();
-        }
-
-        function removeDebt(index) {
-            debts.splice(index, 1);
-            renderDebts();
-            calculateAll();
-        }
-
-        function calculateMonthlyPI(principal, annualRatePct, years = 30) {
+        function pi(principal, ratePct, years = 30) {
             if (principal <= 0) return 0;
-            const r = (annualRatePct / 100) / 12;
-            const n = years * 12;
+            const r = ratePct / 100 / 12, n = years * 12;
             if (r === 0) return principal / n;
-            return (principal * (r * Math.pow(1 + r, n))) / (Math.pow(1 + r, n) - 1);
+            return principal * r * Math.pow(1 + r, n) / (Math.pow(1 + r, n) - 1);
         }
 
-        function calculateAll() {
-            const val = parseFloat(document.getElementById('inputHomeValue').value) || 0;
-            const payoff = parseFloat(document.getElementById('inputPayoff').value) || 0;
-            
-            const gross = Math.max(0, val - payoff);
-            const totalDeductions = val * 0.0671;
-            const net = Math.max(0, gross - totalDeductions);
+        function renderDebts() {
+            $('debtList').innerHTML = debts.map((d, i) => `
+                <div class="grid grid-cols-[auto_1fr_5.5rem_4.5rem_auto] gap-x-2 items-center p-2 bg-slate-950 border ${d.payoff ? 'border-emerald-600/50' : 'border-slate-800'} rounded-xl">
+                    <input type="checkbox" ${d.payoff ? 'checked' : ''} onchange="debts[${i}].payoff=this.checked;renderDebts();calc()" class="w-5 h-5 accent-emerald-500">
+                    <input type="text" value="${esc(d.name)}" oninput="debts[${i}].name=this.value" class="min-w-0 bg-transparent text-xs font-semibold text-white outline-none">
+                    <input type="number" inputmode="numeric" value="${Math.round(d.balance)}" oninput="debts[${i}].balance=parseFloat(this.value)||0;calc()" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-xs text-white">
+                    <input type="number" inputmode="numeric" value="${d.payment}" oninput="debts[${i}].payment=parseFloat(this.value)||0;calc()" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-xs text-white">
+                    <button onclick="debts.splice(${i},1);renderDebts();calc()" class="text-slate-500 hover:text-rose-400 text-xs px-1" aria-label="Remove">✕</button>
+                </div>`).join('');
+        }
 
-            document.getElementById('dispDeductions').innerText = '-$' + Math.round(totalDeductions).toLocaleString();
-            document.getElementById('dispNetEquity').innerText = '$' + Math.round(net).toLocaleString();
+        function addDebt() {
+            debts.push({ name: "New debt", balance: 0, payment: 0, payoff: true });
+            renderDebts(); calc();
+        }
 
-            let debtsPaidTotal = 0;
-            let monthlyFreed = 0;
-            let totalAllDebtPayments = 0;
-            let remainingDebtMonthly = 0;
+        function card(p) {
+            const diff = p.total - p.today;
+            const diffTxt = Math.round(diff) === 0 ? 'Same as today'
+                : money(Math.abs(diff)) + (diff > 0 ? ' more than today' : ' less than today');
+            const diffCls = diff > 0 ? 'text-amber-300' : 'text-emerald-300';
+            const badges = p.badges.map(b => `<span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${b.cls}">${b.t}</span>`).join('');
+            return `
+            <article class="path-card shrink-0 w-[85%] sm:w-[60%] md:w-auto rounded-2xl p-5 space-y-4 shadow-lg ${p.hi ? 'bg-emerald-950/40 border-2 border-emerald-500' : 'bg-slate-900/80 border border-slate-800'}">
+                <div class="space-y-1.5">
+                    <div class="flex flex-wrap gap-1.5 min-h-[1.25rem]">${badges}</div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-amber-400">${p.k}</div>
+                    <h3 class="text-lg font-black text-white leading-tight">${p.h}</h3>
+                    <p class="text-[11px] text-slate-400 leading-snug">${p.b}</p>
+                </div>
 
+                <div class="grid grid-cols-3 gap-2 text-center">
+                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Down</div><div class="text-xs font-bold text-white">${money(p.down)}</div></div>
+                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Debts paid</div><div class="text-xs font-bold text-white">${money(p.paid)}</div></div>
+                    <div class="bg-slate-950 rounded-lg p-2"><div class="text-[9px] text-slate-400 uppercase">Cushion</div><div class="text-xs font-bold text-emerald-400">${money(p.cushion)}</div></div>
+                </div>
+
+                <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 space-y-1.5 text-xs">
+                    <div class="flex justify-between"><span class="text-slate-400">New house payment</span><span class="font-bold text-white">${money(p.house)}</span></div>
+                    <div class="flex justify-between text-[10px] text-slate-500 pl-2"><span>P&amp;I ${money(p.pi)} + taxes/ins ${money(p.escrow)}</span><span>loan ${money(p.loan)}</span></div>
+                    <div class="flex justify-between"><span class="text-slate-400">+ Other debt payments</span><span class="font-bold text-white">${money(p.debt)}</span></div>
+                    <div class="flex justify-between border-t border-slate-800 pt-2"><span class="font-black text-white uppercase tracking-wide text-[11px]">= Whole monthly budget</span><span class="font-black text-white text-base">${money(p.total)}</span></div>
+                </div>
+
+                <div class="rounded-xl p-3 text-center ${diff > 0 ? 'bg-amber-950/30 border border-amber-500/30' : 'bg-emerald-950/40 border border-emerald-500/40'}">
+                    <div class="text-lg font-black ${diffCls}">${diffTxt}</div>
+                    <div class="text-[10px] text-slate-400">Today: ${money(p.today)}/mo</div>
+                </div>
+            </article>`;
+        }
+
+        function calc() {
+            const value = num('inHomeValue'), payoff = num('inPayoff');
+            const sell = value * SELL_PCT;
+            const net = Math.max(0, value - payoff - sell);
+            $('outSellCosts').textContent = '-' + money(sell);
+            $('outNet').textContent = money(net);
+
+            let allPmt = 0, paidBal = 0, paidPmt = 0;
             debts.forEach(d => {
-                totalAllDebtPayments += d.payment;
-                if (d.payoff) {
-                    debtsPaidTotal += d.balance;
-                    monthlyFreed += d.payment;
-                } else {
-                    remainingDebtMonthly += d.payment;
-                }
+                allPmt += d.payment;
+                if (d.payoff) { paidBal += d.balance; paidPmt += d.payment; }
             });
+            const keptPmt = allPmt - paidPmt;
+            $('outPaidBal').textContent = money(paidBal);
+            $('outPaidPmt').textContent = money(paidPmt) + '/mo';
 
-            document.getElementById('dispDebtsPaidTotal').innerText = '$' + Math.round(debtsPaidTotal).toLocaleString();
-            document.getElementById('dispMonthlyFreed').innerText = '+$' + Math.round(monthlyFreed).toLocaleString() + '/mo';
+            const warn = $('debtWarn');
+            if (paidBal > net) {
+                warn.textContent = 'The checked debts (' + money(paidBal) + ') are more than your equity (' + money(net) + '). Uncheck one to see Paths 2 and 3 accurately.';
+                warn.classList.remove('hidden');
+            } else warn.classList.add('hidden');
 
-            const remainingMonies = Math.max(0, net - debtsPaidTotal);
-            const downPayInput = document.getElementById('inputDownPayment');
-            if (!downPayInput.dataset.manual) {
-                downPayInput.value = Math.round(remainingMonies);
-            }
+            const todayHouse = num('inTodayHouse');
+            const today = todayHouse + allPmt;
+            $('tHouse').textContent = money(todayHouse);
+            $('tDebt').textContent = money(allPmt);
+            $('tTotal').innerHTML = money(today) + '<span class="text-sm text-slate-400 font-semibold">/mo</span>';
 
-            const targetPrice = parseFloat(document.getElementById('inputTargetPrice').value) || 0;
-            const downPayment = parseFloat(downPayInput.value) || 0;
-            const loanAmount = Math.max(0, targetPrice - downPayment);
-            const newPI = calculateMonthlyPI(loanAmount, 6.5, 30);
-            const newTotalMortgage = newPI + 550; // $550 taxes/ins estimate
+            const price = num('inPrice'), rate = num('inRate'), escrow = num('inEscrow');
+            const afterDebts = Math.max(0, net - paidBal);
+            const p3Cushion = Math.min(Math.max(0, num('inP3Cushion')), afterDebts);
 
-            document.getElementById('dispCurrentTotalOutflow').innerText = '$' + Math.round(1540 + totalAllDebtPayments).toLocaleString() + '/mo';
-            document.getElementById('dispNewMortgage').innerText = '$' + Math.round(newTotalMortgage).toLocaleString() + '/mo';
-            document.getElementById('dispDebtOffsetCredit').innerText = '-$' + Math.round(monthlyFreed).toLocaleString() + '/mo';
-            document.getElementById('dispEffectiveNetBudget').innerText = '$' + Math.round(newTotalMortgage + remainingDebtMonthly).toLocaleString() + '/mo';
+            const build = (o) => {
+                const loan = Math.max(0, price - o.down);
+                const p = pi(loan, rate);
+                return Object.assign(o, { loan, pi: p, escrow, house: p + escrow, total: p + escrow + o.debt, today });
+            };
+
+            const paths = [
+                build({ k: 'Path 1', h: 'Down Payment Only', b: 'All net equity goes down on the new home. Every debt payment stays.',
+                        down: net, paid: 0, cushion: 0, debt: allPmt }),
+                build({ k: 'Path 2 · Recommended', h: 'Pay Off + Cushion', b: 'Checked debts paid in full. Zero down (like VA). The rest stays in the bank as your cushion.',
+                        down: 0, paid: Math.min(paidBal, net), cushion: afterDebts, debt: keptPmt, hi: true }),
+                build({ k: 'Path 3', h: 'Pay Off + Down', b: 'Checked debts paid in full, your cushion set aside, and the remainder goes down.',
+                        down: afterDebts - p3Cushion, paid: Math.min(paidBal, net), cushion: p3Cushion, debt: keptPmt })
+            ];
+
+            // Badges
+            paths.forEach(p => p.badges = []);
+            const maxC = Math.max(...paths.map(p => p.cushion));
+            if (maxC > 0) paths.filter(p => p.cushion === maxC).forEach(p => p.badges.push({ t: 'Most cushion', cls: 'bg-emerald-500 text-slate-950' }));
+            const minGap = Math.min(...paths.map(p => Math.abs(p.total - today)));
+            paths.filter(p => Math.abs(p.total - today) === minGap).forEach(p => p.badges.push({ t: "Closest to today's budget", cls: 'bg-amber-400 text-slate-950' }));
+
+            $('pathScroller').innerHTML = paths.map(card).join('');
+            renderDots();
         }
 
-        document.getElementById('inputDownPayment').addEventListener('input', () => {
-            document.getElementById('inputDownPayment').dataset.manual = "true";
-        });
+        function renderDots() {
+            const sc = $('pathScroller'), cards = sc.children;
+            if (!cards.length) return;
+            const idx = Math.round(sc.scrollLeft / (cards[0].offsetWidth + 16));
+            $('dots').innerHTML = [0, 1, 2].map(i =>
+                `<button onclick="goCard(${i})" aria-label="Path ${i + 1}" class="h-2 rounded-full transition-all ${i === idx ? 'w-6 bg-amber-400' : 'w-2 bg-slate-600'}"></button>`).join('');
+        }
+        function goCard(i) {
+            const c = $('pathScroller').children[i];
+            if (c) $('pathScroller').scrollTo({ left: c.offsetLeft - 16, behavior: 'smooth' });
+        }
+        $('pathScroller').addEventListener('scroll', () => requestAnimationFrame(renderDots));
+
+        function copyText(t, btn) {
+            const done = () => { const o = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = o, 1500); };
+            if (navigator.clipboard) navigator.clipboard.writeText(t).then(done).catch(done); else done();
+        }
 
         function sharePulse() {
-            const val = parseFloat(document.getElementById('inputHomeValue').value) || 0;
-            const payoff = parseFloat(document.getElementById('inputPayoff').value) || 0;
-            const equity = Math.max(0, val - payoff);
-
-            const payload = { rate: 2.25, equity: equity, timestamp: Date.now() };
-            const existing = JSON.parse(localStorage.getItem('room_pulse_data') || '[]');
-            existing.push(payload);
-            localStorage.setItem('room_pulse_data', JSON.stringify(existing));
-
-            document.getElementById('pulseConfirm').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('pulseConfirm').classList.add('hidden'); }, 3000);
+            const value = num('inHomeValue'), payoff = num('inPayoff');
+            const payload = { rate: 2.25, equity: Math.max(0, value - payoff), timestamp: Date.now() };
+            try {
+                const existing = JSON.parse(localStorage.getItem('room_pulse_data') || '[]');
+                existing.push(payload);
+                localStorage.setItem('room_pulse_data', JSON.stringify(existing));
+            } catch (e) {}
+            $('pulseConfirm').classList.remove('hidden');
+            setTimeout(() => $('pulseConfirm').classList.add('hidden'), 3000);
         }
 
         renderDebts();
-        calculateAll();
+        calc();
     </script>
 </body>
 </html>
