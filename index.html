@@ -36,6 +36,37 @@
             </p>
         </section>
 
+        <!-- Join: name so numbers save -->
+        <section id="joinCard" class="bg-slate-900/80 border border-amber-500/40 rounded-2xl p-5 space-y-3 shadow-lg max-w-2xl mx-auto">
+            <div>
+                <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400">Save Your Worksheet</h2>
+                <p id="joinMsg" class="text-[11px] text-slate-400 mt-1">Add your name so your numbers save and you get your own private link to come back anytime.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+                <input id="jFirst" type="text" autocomplete="given-name" placeholder="First name" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm">
+                <input id="jLast" type="text" autocomplete="family-name" placeholder="Last name" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm">
+                <input id="jPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Mobile" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm">
+                <input id="jEmail" type="email" autocomplete="email" placeholder="Email" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm">
+            </div>
+            <button id="joinBtn" onclick="join()" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-black">Save My Worksheet</button>
+            <p class="text-[10px] text-slate-500 text-center">Private to you. Only Bill sees your numbers.</p>
+        </section>
+
+        <!-- Personal link (after joining) -->
+        <section id="myCard" class="hidden bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-5 space-y-3 max-w-2xl mx-auto">
+            <div class="flex items-center justify-between gap-2">
+                <h2 id="myHello" class="text-sm font-black text-white">Welcome</h2>
+                <span id="saveStatus" class="text-[11px] text-emerald-300 font-semibold"></span>
+            </div>
+            <p class="text-[11px] text-slate-300">Your numbers save automatically. This is your private link. Use it anytime to come back and play with your numbers.</p>
+            <input id="myLink" type="text" readonly class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-emerald-200 text-xs" onclick="this.select()">
+            <div class="grid grid-cols-3 gap-2">
+                <button onclick="copyText($('myLink').value, this)" class="py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">Copy my link</button>
+                <a id="myEmailLink" href="#" class="py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 text-center">✉️ Email it to me</a>
+                <a id="myTextLink" href="#" class="py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200 text-center">💬 Text it to me</a>
+            </div>
+        </section>
+
         <div class="grid md:grid-cols-2 gap-6 md:items-start">
 
             <!-- Step 1: Equity -->
@@ -174,10 +205,18 @@
         <section class="bg-emerald-950/30 border border-emerald-500/30 rounded-2xl p-5 text-center space-y-3">
             <p class="text-sm text-emerald-100 font-semibold">None of these is automatically right. The right one fits your goals.</p>
             <p class="text-xs text-slate-300">Want to see this with your real numbers? Grab 10 minutes with me and we'll build your plan together. No application, no pressure.</p>
+            <button id="sendOpen" onclick="openSend()" class="block w-full sm:w-auto sm:inline-block px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-base font-black">📤 Send My Numbers to Bill</button>
+            <div id="sendBox" class="hidden text-left space-y-2 bg-slate-950/60 border border-slate-800 rounded-xl p-3">
+                <label class="block text-[11px] font-semibold text-slate-400">Anything you want me to know? (optional)</label>
+                <textarea id="sendNote" rows="2" maxlength="500" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm"></textarea>
+                <label class="block text-[11px] font-semibold text-slate-400">Want a free home value estimate? Add your address (optional)</label>
+                <input id="sendAddr" type="text" autocomplete="street-address" maxlength="200" class="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-white text-sm">
+                <button id="sendBtn" onclick="sendToBill()" class="w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 text-sm font-black">Send to Bill</button>
+            </div>
+            <p id="sendMsg" class="hidden text-sm text-emerald-200 font-semibold"></p>
             <a href="https://calendly.com/billclayton-rate/intro-call" target="_blank" rel="noopener" class="block w-full sm:w-auto sm:inline-block px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-base font-black">📅 Book 10 Minutes with Bill</a>
             <div class="flex flex-wrap justify-center gap-2 pt-1">
                 <a href="tel:+17066605245" class="px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">📞 706-660-5245</a>
-                <button onclick="copyText('706-660-5245', this)" class="px-3 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">Copy number</button>
                 <a href="mailto:bill.clayton@rate.com?subject=Move-Up%20Workshop%20-%20my%20plan" class="px-4 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-xs font-semibold text-slate-200">✉️ bill.clayton@rate.com</a>
             </div>
         </section>
@@ -226,7 +265,7 @@
             $('debtList').innerHTML = debts.map((d, i) => `
                 <div class="grid grid-cols-[auto_1fr_5.5rem_4.5rem_auto] gap-x-2 items-center p-2 bg-slate-950 border ${d.payoff ? 'border-emerald-600/50' : 'border-slate-800'} rounded-xl">
                     <input type="checkbox" ${d.payoff ? 'checked' : ''} onchange="debts[${i}].payoff=this.checked;renderDebts();calc()" class="w-5 h-5 accent-emerald-500">
-                    <input type="text" value="${esc(d.name)}" oninput="debts[${i}].name=this.value" class="min-w-0 bg-transparent text-xs font-semibold text-white outline-none">
+                    <input type="text" value="${esc(d.name)}" oninput="debts[${i}].name=this.value;queueSave()" class="min-w-0 bg-transparent text-xs font-semibold text-white outline-none">
                     <input type="number" inputmode="numeric" value="${Math.round(d.balance)}" oninput="debts[${i}].balance=parseFloat(this.value)||0;calc()" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-xs text-white">
                     <input type="number" inputmode="numeric" value="${d.payment}" oninput="debts[${i}].payment=parseFloat(this.value)||0;calc()" class="w-full bg-slate-900 border border-slate-700 rounded px-1.5 py-1 text-xs text-white">
                     <button onclick="debts.splice(${i},1);renderDebts();calc()" class="text-slate-500 hover:text-rose-400 text-xs px-1" aria-label="Remove">✕</button>
@@ -345,6 +384,20 @@
                 $('badge' + i).innerHTML = b.join('');
             });
             renderDots();
+
+            // Numbers saved for Bill (same fields as the Nov 8 worksheet)
+            let bi = 0;
+            res.forEach((r, i) => { if (Math.abs(r.total - today) < Math.abs(res[bi].total - today)) bi = i; });
+            LAST = {
+                hv: Math.round(value), mb: Math.round(payoff), today: Math.round(today), equity: Math.round(net),
+                np: Math.round(price), rt: rate, yB: Math.round(paidBal),
+                p1: Math.round(res[0].total), p2: Math.round(res[1].total), p3: Math.round(res[2].total),
+                s2: Math.round(today - res[1].total), s3: Math.round(today - res[2].total),
+                best: 'Path ' + (bi + 1) + ' ' + PATHS[bi].h, bestDiff: Math.round(res[bi].total - today),
+                debtsText: debts.map(d => d.name + ' ' + money(d.balance) + ' (' + money(d.payment) + '/mo)' + (d.payoff ? ' PAY OFF' : '')).join('; '),
+                be: '', fp: '', stage: [], goals: [], mistake: ''
+            };
+            queueSave();
         }
 
         function renderDots() {
@@ -364,9 +417,127 @@
             if (navigator.clipboard) navigator.clipboard.writeText(t).then(done).catch(done); else done();
         }
 
+        /* ---------- Saving, personal links, Send to Bill ---------- */
+        // Move-Up Workshop web app (Deploy > Manage deployments > Web app URL, ends in /exec)
+        const API = 'https://script.google.com/macros/s/AKfycbzle4DkLoxSD2Yk4TNdXF5d6FUhWbVzaVBdox-ZBrkygWfL9M4PbZ0dsibs8seCnrMn_Q/exec';
+        const DEFAULT_W = 'MU1110';   // tonight's workshop code
+        const SITE = location.origin + location.pathname;
+        const qs = new URLSearchParams(location.search);
+        const W = (qs.get('w') || DEFAULT_W).replace(/[^A-Za-z0-9-]/g, '').slice(0, 40);
+        const LS = 'tc-moveup-' + W;
+        let ME = (qs.get('me') || '').replace(/[^A-Za-z0-9-]/g, '').slice(0, 40);
+        let PROFILE = null, LAST = {}, READY = false, saveTimer = null;
+        const INPUTS = ['inHomeValue', 'inPayoff', 'inTodayHouse', 'inListPct', 'inNegPct', 'inPrice', 'inRate', 'inEscrow'];
+
+        function api(body) {
+            return fetch(API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(body) })
+                .then(r => r.json()).then(j => { if (!j.ok) throw new Error(j.error || 'failed'); return j; });
+        }
+        function lsGet() { try { return JSON.parse(localStorage.getItem(LS) || 'null'); } catch (e) { return null; } }
+        function lsSet(v) { try { localStorage.setItem(LS, JSON.stringify(v)); } catch (e) {} }
+        function newId() {
+            if (window.crypto && crypto.randomUUID) return crypto.randomUUID();
+            return 'x' + Date.now().toString(36) + Math.random().toString(36).slice(2, 12);
+        }
+        function myUrl() { return SITE + '?w=' + encodeURIComponent(W) + '&me=' + encodeURIComponent(ME); }
+        function getState() {
+            const v = {}; INPUTS.forEach(id => v[id] = $(id).value);
+            return { v: v, debts: debts, adj: adj.slice() };
+        }
+        function applyState(s) {
+            if (!s || !s.v) return;
+            INPUTS.forEach(id => { if (s.v[id] != null) $(id).value = s.v[id]; });
+            if (Array.isArray(s.debts)) debts = s.debts;
+            if (Array.isArray(s.adj)) s.adj.forEach((x, i) => adj[i] = +x || 0);
+            document.querySelectorAll('#pathScroller input[type=range]').forEach((el, i) => el.value = adj[i]);
+            renderDebts(); calc();
+        }
+        function setStatus(t) { $('saveStatus').textContent = t; }
+        function queueSave() {
+            if (!READY || !ME || !PROFILE) return;
+            clearTimeout(saveTimer);
+            setStatus('Saving…');
+            saveTimer = setTimeout(() => saveNow(), 1500);
+        }
+        function saveNow(extra) {
+            const body = Object.assign({ action: 'save', w: W, id: ME }, PROFILE, LAST, { state: getState() }, extra || {});
+            return api(body).then(() => {
+                setStatus('Saved ✓ ' + new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }));
+            }).catch(err => { setStatus('Not saved yet. Check your connection.'); throw err; });
+        }
+        function showMine() {
+            $('joinCard').classList.add('hidden');
+            $('myCard').classList.remove('hidden');
+            $('myHello').textContent = 'Welcome, ' + (PROFILE.first || 'friend') + '!';
+            const link = myUrl();
+            $('myLink').value = link;
+            const msg = 'My Move-Up worksheet from Bill Clayton: ' + link;
+            if (PROFILE.email) { $('myEmailLink').href = 'mailto:' + encodeURIComponent(PROFILE.email) + '?subject=' + encodeURIComponent('My Move-Up worksheet') + '&body=' + encodeURIComponent(msg); $('myEmailLink').classList.remove('hidden'); }
+            else $('myEmailLink').classList.add('hidden');
+            if (PROFILE.phone) { $('myTextLink').href = 'sms:' + PROFILE.phone.replace(/[^\d+]/g, '') + '?&body=' + encodeURIComponent(msg); $('myTextLink').classList.remove('hidden'); }
+            else $('myTextLink').classList.add('hidden');
+            try { history.replaceState(null, '', '?w=' + encodeURIComponent(W) + '&me=' + encodeURIComponent(ME)); } catch (e) {}
+        }
+        function join() {
+            const p = { first: $('jFirst').value.trim(), last: $('jLast').value.trim(), phone: $('jPhone').value.trim(), email: $('jEmail').value.trim() };
+            if (!p.first) { $('joinMsg').textContent = 'Please add your first name.'; $('jFirst').focus(); return; }
+            if (!p.phone && !p.email) { $('joinMsg').textContent = 'Please add your mobile or email so you can get back to your numbers.'; $('jPhone').focus(); return; }
+            const btn = $('joinBtn'); btn.disabled = true; btn.textContent = 'Saving…';
+            ME = ME || newId(); PROFILE = p;
+            saveNow().then(() => {
+                lsSet({ id: ME, profile: p });
+                showMine();
+            }).catch(() => {
+                ME = ''; PROFILE = null;
+                $('joinMsg').textContent = 'That didn’t save. Check your connection and tap Save again.';
+            }).finally(() => { btn.disabled = false; btn.textContent = 'Save My Worksheet'; });
+        }
+        function openSend() {
+            if (!ME || !PROFILE) {
+                $('joinMsg').textContent = 'Add your name first so Bill knows whose numbers these are.';
+                $('joinCard').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                $('jFirst').focus();
+                return;
+            }
+            $('sendOpen').classList.add('hidden');
+            $('sendBox').classList.remove('hidden');
+        }
+        function sendToBill() {
+            const btn = $('sendBtn'); btn.disabled = true; btn.textContent = 'Sending…';
+            const addr = $('sendAddr').value.trim();
+            const extra = { sent: true, note: $('sendNote').value.trim() };
+            if (addr) { extra.cma = true; extra.address = addr; }
+            clearTimeout(saveTimer);
+            saveNow(extra).then(() => {
+                $('sendBox').classList.add('hidden');
+                $('sendMsg').textContent = 'Sent ✓ Thanks, ' + (PROFILE.first || '') + '. I’ll reach out personally. - Bill';
+                $('sendMsg').classList.remove('hidden');
+            }).catch(() => {
+                btn.disabled = false; btn.textContent = 'Send to Bill';
+                $('sendMsg').textContent = 'That didn’t send. Check your connection and try again.';
+                $('sendMsg').classList.remove('hidden');
+            });
+        }
+        function loadMine() {
+            if (!ME) { const saved = lsGet(); if (saved && saved.id) ME = saved.id; }
+            if (!ME) { READY = true; return; }
+            $('joinMsg').textContent = 'Loading your numbers…';
+            api({ action: 'get', w: W, id: ME }).then(j => {
+                if (!j.me) throw new Error('not found');
+                PROFILE = { first: j.me.first || '', last: j.me.last || '', phone: String(j.me.phone || ''), email: j.me.email || '' };
+                applyState(j.me.state);
+                lsSet({ id: ME, profile: PROFILE });
+                showMine(); setStatus('Saved ✓');
+            }).catch(() => {
+                ME = '';
+                $('joinMsg').textContent = 'We couldn’t open that saved worksheet. Add your name below to start a new one.';
+            }).finally(() => { READY = true; });
+        }
+
         renderDebts();
         buildCards();
         calc();
+        loadMine();
     </script>
 </body>
 </html>
